@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
+import Laptop from "./components/Laptop";
+import Accessories from "./components/Accessories";
+import Printer_Cartridge from "./components/Printer_Cartridge";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Checkout from "./components/Checkout";
 
 function App() {
+  const [activeButton, setActiveButton] = useState(null);
+
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Header onButtonClick={handleButtonClick} />
+        <main>
+          <Switch>
+            <Route path="/checkout">
+              {activeButton === "laptop" && <h5></h5>}
+              {activeButton === "accessories" && <h5></h5>}
+              {activeButton === "cartridge" && <h5></h5>}
+              <Checkout />
+            </Route>
+            <Route path="/">
+              {!activeButton && <Main />}
+              {activeButton === "laptop" && <Laptop />}
+              {activeButton === "accessories" && <Accessories />}
+              {activeButton === "cartridge" && <Printer_Cartridge />}
+            </Route>
+          </Switch>
+        </main>
+        <Footer />
+      </Router>
+    </>
   );
 }
 

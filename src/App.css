@@ -1,38 +1,292 @@
-.App {
-  text-align: center;
+/* Header */
+
+.navBar_top{
+   background-color: rgb(238,238,238);
+   overflow: hidden;
+   padding: 10px;
+}
+.navBar_top button{
+    border: none;
+    float: left;
+    color: #888;
+    text-align: center; 
+}
+.navBar_top button:hover{
+    color: black;
+}
+.navbar_top_options{
+    float: right;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.navbar_top_options li{
+    display: inline;
+    padding: 8px;
+}
+.navbar_top_options li a{
+    font-size: 0.84em;
+    text-align: center;
+    text-decoration: none;
+    color: #888;
+}
+.navbar_top_options li a:hover{
+    color: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header { 
+    clear: both;
+}
+.header{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+}
+.navBar{
+    padding: 10px;
+    height: 70px;
+}
+.company_name{
+    text-decoration: none;
+    color: rgb(34,155,202);
+    font-family: "Open Sans",sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+    /* display: inline; */
+    float: left;
+    width: 400px;
+    font-weight: 170;
+}
+.navbar_options{
+    list-style-type: none;
+    margin: 15px;
+    padding: 10px;
+    background-color: rgb(34,155,202);
+    border-radius: 10px;
+}
+.navbar_options li{
+    display: inline;
+    padding: 10px;
+    color: white;
+}
+.navbar_options li:hover{
+    background-color: rgb(12, 121, 164);
+}
+.cart_btn{
+    float: right;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    line-height: 20px;
+    padding: 5px;
+    background-color: rgb(61,61,61);
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+}
+.cart_btn:hover{
+    background-color: black;
+}
+.search_nav input{
+    width: 350px;
+    height: 40px;
+    border-radius: 5px 0px 0px 5px;
+    line-height: 20px;
+    background-color: rgba(255, 255, 255, 0.584);
+    border-color: rgb(238,238,238);
+    /* display: inline; */
+    float: left;
+}
+.search_nav button{
+    /* display: inline; */
+    width: 50px;
+    height: 40px;
+    border-radius: 0px 5px 5px 0px;
+    line-height: 20px;
+    background-color: #dedede;
+    border: none;
+    float: left;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Main */
+.main{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+}
+.banner_img img{
+    width: 100%;
+    height: 400px;
+}
+.card{
+/* Flex will make in row */
+    display: flex; 
+    flex-direction: column;
+    /* width: 300px; */
+    border: 1px solid #b2b2b2;
+    padding: 15px;
+    margin: 5px;
+    /*  */
+    align-items: center;
+    justify-content: flex-end;
+    width: 280px;
+    height: 360px;
+    margin-bottom: 0;
+}
+.card img{
+    width: 160px;
+    object-fit: contain;
+}
+.card p{
+    font-weight: 200;
+}
+.abx{
+    display: flex;
+    margin-top: 15px;
+}
+.abx button{
+    border: 1px solid #b2b2b2;
+    background-color: rgb(238,238,238);
+    color: #888; 
+    padding: 10px; 
+    margin-top: 0;
+    width: 104px;
+}
+/* .card_buttons{
+    margin-left: 5px;
+    display: flex;
+}
+.card_buttons button{
+    border: 1px solid #b2b2b2;
+    background-color: rgb(238,238,238);
+    color: #888; 
+    padding: 10px; 
+    margin-top: 0;
+    width: 104px;
+} */
+
+.card h4{
+    color: rgb(34,155,202);
+}
+.card p{
+    margin: 0;
+}
+
+.card button:hover{
+    background-color: #888; 
+    color: white;   
+}
+
+.partition{
+    border-top: 0.2px dotted white;
+    margin: 10px;
+}
+/* Footer */
+
+.footer{
+    background-color: rgb(61,61,61);
+    overflow: hidden;
+}
+
+.footer_columns {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.column {
+    float: left;
+    width: 20%;
+    padding: 25px;
+    /* height: 200px; */
   }
-  to {
-    transform: rotate(360deg);
-  }
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.column ul{
+    font-weight: bold;
+    padding: 0;
+    color: white;
+}
+.column li{
+    list-style-type: none;
+    text-align: left;
+    padding: 2px;
+    font-size: 0.8em;
+    color: whitesmoke;
+}
+.copy_footer{
+    clear: both;
+    color: #888;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+    font-size: small;
+}
+.copy_footer hr{
+    width: 1200px;
+}
+
+.card button{
+    width: 90px;
+    height: 30px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    padding: 2px;
+    margin-right: 5px;
+}
+
+/* Checkout */
+.checkout{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+    display: flex;
+}
+.checkout_right h1{
+    font-weight: 200;
+}
+.checkout_left h1{
+    font-weight: 200;
+    width: 800px;
+}
+
+/* Subtotal */
+.subtotal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    max-width: 250px;
+    height: 200px;
+    margin-bottom: 10px;
+    background-color: #f3f3f3;
+}
+.subtotal button{
+    width: 150px;
+    border: 1px solid #b2b2b2;
+    color: #888; 
+    padding: 10px;
+    align-self: center;
+    border-radius: 10px;
+}
+.subtotal button:hover{
+    background-color: #888; 
+    color: white;   
+}
+
+h5::after{
+    content: "*Please exit checkout first";
+    
+}
+h5{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    color: red;
+    font-weight: 100;
+    margin-top: 0;
 }
