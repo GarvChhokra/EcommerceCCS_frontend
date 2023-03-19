@@ -16,11 +16,13 @@ export default function Header(props) {
                 <i className="fa fa-phone"></i> 9412052744
               </a>
             </li>
-            <li>
-              <a href="">
-                <i className="fa fa-user"> My Account</i>
-              </a>
-            </li>
+            <Link to="/login">
+              <li>
+                <a href="">
+                  <i className="fa fa-user"> My Account</i>
+                </a>
+              </li>
+            </Link>
             <li>
               <a href="">
                 <i className="fa fa-heart"> WishList</i>

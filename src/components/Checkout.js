@@ -1,6 +1,6 @@
 import React from "react";
 import Subtotal from "./Subtotal";
-import CurrencyFormat from "react-currency-format";
+// import CurrencyFormat from "react-currency-format";
 
 export default function Checkout() {
   return (

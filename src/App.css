@@ -40,7 +40,7 @@
 .header{
     margin-left: auto;
     margin-right: auto;
-    width: 1200px;
+    max-width: 1200px;
 }
 .navBar{
     padding: 10px;
@@ -54,7 +54,7 @@
     font-size: 30px;
     /* display: inline; */
     float: left;
-    width: 400px;
+    max-width: 400px;
     font-weight: 170;
 }
 .navbar_options{
@@ -109,14 +109,14 @@
 }
 
 /* Main */
-.main{
+.main, .contactus, .aboutUs, .login, .register{
     margin-left: auto;
     margin-right: auto;
-    width: 1200px;
+    max-width: 1200px;
 }
 .banner_img img{
-    width: 100%;
-    height: 400px;
+    max-width: 100%;
+    max-height: 400px;
 }
 .card{
 /* Flex will make in row */
@@ -130,7 +130,7 @@
     align-items: center;
     justify-content: flex-end;
     width: 280px;
-    height: 360px;
+    height: 400px;
     margin-bottom: 0;
 }
 .card img{
@@ -186,6 +186,7 @@
 .footer{
     background-color: rgb(61,61,61);
     overflow: hidden;
+    clear: both;
 }
 
 .footer_columns {
@@ -261,22 +262,192 @@
     border: 1px solid #888;
     border-radius: 5px;
     max-width: 250px;
-    height: 200px;
+    height: 220px;
     margin-bottom: 10px;
     background-color: #f3f3f3;
 }
 .subtotal button{
-    width: 150px;
-    border: 1px solid #b2b2b2;
-    color: #888; 
+    background-color: rgb(34,155,202);
+    color: white;
+    border: 1px solid rgb(34,155,202);
+    border-radius: 5px;
     padding: 10px;
-    align-self: center;
-    border-radius: 10px;
+    text-shadow: rgb(34,155,202);
+    margin-top: -10px;
+    margin-bottom: 10px;
 }
 .subtotal button:hover{
-    background-color: #888; 
+    background-color: rgb(12, 121, 164);
     color: white;   
+    border: 1px solid rgb(12, 121, 164);
 }
+
+/* About Us */
+
+.aboutUs li,p{
+    line-height: 1.8em;
+    font-weight: 100;
+}
+
+/* Login */
+.login{
+    display: flex;
+}
+.login_left, .login_right{
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #b2b2b2;
+    background-color: rgb(238,238,238);
+    border-radius: 10px;
+    margin: 70px;
+}
+.login_left{
+    height: 200px;
+}
+.login_right{
+    padding-left: 20px;
+    width: 450px;
+    height: 280px;
+}
+.login_left h2, .login_right h2{
+    font-weight: 400;
+    margin-bottom: 0;
+}
+.login_left small, .login_right small{
+    font-weight: 500;
+    color: #888;
+}
+.login_left p, .login_right p{
+    line-height: 18px;
+    font-size: 0.8em;
+}
+.login_left button, .login_right button{
+    background-color: rgb(34,155,202);
+    color: white;
+    border: 1px solid rgb(34,155,202);
+    border-radius: 5px;
+    padding: 10px;
+    text-shadow: rgb(34,155,202);
+}
+.login_right p{
+    margin-bottom: 0;
+}
+.login_right input{
+    border-radius: 4px;
+    border: 1px solid #b2b2b2;
+    padding: 5px;
+}
+.login_right button{
+    margin-top: 10px;
+}
+.login_right button:hover{
+        background-color: rgb(12, 121, 164);
+        color: white;   
+        border: 1px solid rgb(12, 121, 164);
+}
+.login_left button:hover{
+        background-color: rgb(12, 121, 164);
+        color: white;   
+        border: 1px solid rgb(12, 121, 164);
+}
+
+/* Contact Us */
+.location{
+    border: 1px solid #cac8c8;
+    border-radius: 5px;
+    display: flex;
+    margin: 5px;
+}
+.location_left{
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+}
+.location_right{
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+}
+.location_right p:first-child, .location_left p:first-child{
+    font-weight: 400;
+    font-size: 1.2em;
+}
+.location_right p, .location_left p{
+    margin: 0;
+    padding: 0;
+    line-height: 1.5em;
+}
+.contactus hr{
+    border: 0.01px solid #eeecec;
+}
+.contactus form{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.contactus form label{
+    padding: 10px;
+    vertical-align: top;
+}
+.contactus form button{
+    background-color: rgb(34,155,202);
+    color: white;
+    border: 1px solid rgb(34,155,202);
+    border-radius: 5px;
+    padding: 10px;
+    text-shadow: rgb(34,155,202);
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+.contactus form input{
+    width: 800px;
+    height: 25px;
+   border: 2px solid rgb(208,208,208);
+   border-radius: 5px;
+}
+.contactus form input:focus{
+   border: 2px solid rgb(84, 162, 193);
+   border-color: rgb(34,155,202);
+}
+.contactus form textarea{
+    width: 800px;
+    height: 150px;
+    border: 2px solid rgb(208,208,208);
+    border-radius: 5px;
+    margin-bottom: 0;
+}
+
+/* Register */
+.register{
+    border: 1px solid #b2b2b2;
+    background-color: rgb(238,238,238);
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 400px;
+    max-height: 240px;
+    margin-bottom: 5px;
+}
+.register p{
+    margin: 0;
+}
+.register strong, h1{
+    margin: 0;
+    padding: 0;
+}
+.register p{
+    padding-top: 10px;
+}
+.registerBtn button{
+    background-color: rgb(34,155,202);
+    color: white;
+    border: 1px solid rgb(34,155,202);
+    border-radius: 5px;
+    padding: 10px;
+    text-shadow: rgb(34,155,202);
+    margin-top: 10px;
+}
+/*  */
 
 h5::after{
     content: "*Please exit checkout first";

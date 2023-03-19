@@ -8,8 +8,29 @@ import Accessories from "./components/Accessories";
 import Printer_Cartridge from "./components/Printer_Cartridge";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Checkout from "./components/Checkout";
+import About_Us from "./components/About_Us";
+import ContactUs from "./components/ContactUs";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
+  const client = [
+    "THDC INDIA LTD.",
+    "MODERN INSTITUTE OF TECHNOLOGY",
+    "NIRMAL ASHRAM HOSPITAL",
+    "NIRMAL ASHRAM HOSPITAL",
+    "NIRMAL ASHRAM HOSPITAL",
+    "RISHIKESH PUBLIC SCHOOL",
+    "APCO INFRASTUCTURE PVT LTD.",
+    "NAVAYUGA ENGINEERING COMPANY LTD.",
+    "NAVAYUGA ENGINEERING COMPANY LTD.",
+    "DAYANANDA ASHRAM",
+    "SHIVANANDA ASHRAM",
+    "SHIVANANDA ASHRAM",
+    "SHIVANANDA ASHRAM",
+    "GOVT GIRLS INTER COLLEGE",
+    "ALL INDIA INSTITUE OF MEDICAL SCIENCES, RISHIKESH",
+  ];
   const [activeButton, setActiveButton] = useState(null);
 
   const handleButtonClick = (buttonName) => {
@@ -23,10 +44,19 @@ function App() {
         <main>
           <Switch>
             <Route path="/checkout">
-              {activeButton === "laptop" && <h5></h5>}
-              {activeButton === "accessories" && <h5></h5>}
-              {activeButton === "cartridge" && <h5></h5>}
               <Checkout />
+            </Route>
+            <Route path="/about">
+              <About_Us client={client} />
+            </Route>
+            <Route path="/contactus">
+              <ContactUs />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/register">
+              <Register />
             </Route>
             <Route path="/">
               {!activeButton && <Main />}
