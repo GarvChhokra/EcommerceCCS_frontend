@@ -132,6 +132,9 @@
     width: 280px;
     height: 400px;
     margin-bottom: 0;
+    float: left;
+    margin-left: 50px;
+    margin-bottom: 50px;
 }
 .card img{
     width: 160px;

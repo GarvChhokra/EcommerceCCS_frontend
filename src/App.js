@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -12,6 +13,7 @@ import About_Us from "./components/About_Us";
 import ContactUs from "./components/ContactUs";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import ProductInfo from "./components/ProductInfo";
 
 function App() {
   const client = [
@@ -36,6 +38,14 @@ function App() {
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
   };
+  const [name, setName] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://ccsdata.onrender.com/ccsData")
+      .then((response) => setName(response.data))
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <>
@@ -46,6 +56,11 @@ function App() {
             <Route path="/checkout">
               <Checkout />
             </Route>
+            {name.map((nameB) => (
+              <Route key={nameB.name} path={`/${nameB.name}`}>
+                <ProductInfo />
+              </Route>
+            ))}
             <Route path="/about">
               <About_Us client={client} />
             </Route>
@@ -59,10 +74,12 @@ function App() {
               <Register />
             </Route>
             <Route path="/">
-              {!activeButton && <Main />}
-              {activeButton === "laptop" && <Laptop />}
-              {activeButton === "accessories" && <Accessories />}
-              {activeButton === "cartridge" && <Printer_Cartridge />}
+              {!activeButton && <Main name={name} />}
+              {activeButton === "laptop" && <Laptop name={name} />}
+              {activeButton === "accessories" && <Accessories name={name} />}
+              {activeButton === "cartridge" && (
+                <Printer_Cartridge name={name} />
+              )}
             </Route>
           </Switch>
         </main>
