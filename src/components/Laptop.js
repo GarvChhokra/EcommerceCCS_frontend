@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Laptop(props) {
   return (
     <>
       <div className="main">
         <div className="banner_img">
-          <img className="mySlides" src="main.jpg"></img>
+          <img className="mySlides" src="banner.jpg"></img>
           {/* <img className="mySlides" src="accessories.jpg"></img>
           <img className="mySlides" src="banner.jpg"></img>
           <img className="mySlides" src="printer_cartridge.jpg"></img> */}
@@ -22,8 +23,24 @@ export default function Laptop(props) {
             .filter((item) => item.category === "Laptop")
             .map((nameB) => (
               <div className="card">
-                <img src={`${nameB.name}.jpg`} alt={nameB.category}></img>
-                <h4>{nameB.name}</h4>
+                <Link
+                  onClick={() => {
+                    props.onButtonClick({
+                      name: nameB.name,
+                      brand: nameB.brand,
+                      price: nameB.price,
+                      category: nameB.category,
+                      description: nameB.description,
+                      image: `${nameB.name}.jpg`,
+                    });
+                    console.log(nameB.name);
+                  }}
+                  className="my-Link"
+                  to={`/${nameB.name}`}
+                >
+                  <img src={`${nameB.name}.jpg`} alt={nameB.category}></img>
+                  <h4>{nameB.name}</h4>
+                </Link>
                 <p>{nameB.description}</p>
                 <p>{nameB.price}</p>
                 <div className="abx">

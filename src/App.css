@@ -109,7 +109,7 @@
 }
 
 /* Main */
-.main, .contactus, .aboutUs, .login, .register{
+.main, .contactus, .aboutUs, .login, .register, .productInfo{
     margin-left: auto;
     margin-right: auto;
     max-width: 1200px;
@@ -463,4 +463,52 @@ h5{
     color: red;
     font-weight: 100;
     margin-top: 0;
+}
+
+.my-Link{
+    text-decoration: none;
+}
+.my-Link img{
+}
+
+
+
+/* Product Info for indicidual */
+.productInfo{
+    display: flex;
+}
+.productInfo_left img{
+    display: block;
+    width:300px;
+    padding: 20px;
+    height: 180px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+.productInfo_left, .productInfo_right{
+    padding: 10px;
+    text-align: center;
+}
+.productInfo_left p, .productInfo_right p{
+    color: #555;
+}
+.productInfo_right p{
+    text-align: left;
+}
+.productInfo_left{
+    padding-right: 40px;
+}
+.productInfo_right input{
+    width: 80%;
+}
+.productInfo_right button{
+    width: 60%;
+    background-color: rgb(34,155,202);
+    color: white;
+    border: 1px solid rgb(34,155,202);
+    border-radius: 5px;
+    padding: 10px;
+    text-shadow: rgb(34,155,202);
 }

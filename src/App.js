@@ -14,8 +14,19 @@ import ContactUs from "./components/ContactUs";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import ProductInfo from "./components/ProductInfo";
+import { createContext } from "react";
 
 function App() {
+  // Cart functionality
+  const [cart, setCart] = useState([]);
+
+  // individual page for product
+  const [item, setItem] = useState([]);
+  const handleButtonClick1 = (productName) => {
+    console.log(productName);
+    setItem(productName);
+  };
+
   const client = [
     "THDC INDIA LTD.",
     "MODERN INSTITUTE OF TECHNOLOGY",
@@ -56,11 +67,14 @@ function App() {
             <Route path="/checkout">
               <Checkout />
             </Route>
-            {name.map((nameB) => (
+            {/* {name.map((nameB) => (
               <Route key={nameB.name} path={`/${nameB.name}`}>
-                <ProductInfo />
+                <ProductInfo name={name} />
               </Route>
-            ))}
+            ))} */}
+            <Route path={`/${item.name}`}>
+              <ProductInfo item={item} />
+            </Route>
             <Route path="/about">
               <About_Us client={client} />
             </Route>
@@ -74,11 +88,20 @@ function App() {
               <Register />
             </Route>
             <Route path="/">
-              {!activeButton && <Main name={name} />}
-              {activeButton === "laptop" && <Laptop name={name} />}
-              {activeButton === "accessories" && <Accessories name={name} />}
+              {!activeButton && (
+                <Main name={name} onButtonClick={handleButtonClick1} />
+              )}
+              {activeButton === "laptop" && (
+                <Laptop name={name} onButtonClick={handleButtonClick1} />
+              )}
+              {activeButton === "accessories" && (
+                <Accessories name={name} onButtonClick={handleButtonClick1} />
+              )}
               {activeButton === "cartridge" && (
-                <Printer_Cartridge name={name} />
+                <Printer_Cartridge
+                  name={name}
+                  onButtonClick={handleButtonClick1}
+                />
               )}
             </Route>
           </Switch>

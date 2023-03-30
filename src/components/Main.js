@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Main(props) {
   // const [name, setName] = useState([]);
@@ -28,8 +29,24 @@ export default function Main(props) {
         <div className="card_jsn">
           {props.name.map((nameB) => (
             <div className="card">
-              <img src={`${nameB.name}.jpg`} alt={nameB.category}></img>
-              <h4>{nameB.name}</h4>
+              <Link
+                onClick={() => {
+                  props.onButtonClick({
+                    name: nameB.name,
+                    brand: nameB.brand,
+                    price: nameB.price,
+                    category: nameB.category,
+                    description: nameB.description,
+                    image: `${nameB.name}.jpg`,
+                  });
+                  console.log(nameB.name);
+                }}
+                className="my-Link"
+                to={`/${nameB.name}`}
+              >
+                <img src={`${nameB.name}.jpg`} alt={nameB.category}></img>
+                <h4>{nameB.name}</h4>
+              </Link>
               <p>{nameB.description}</p>
               <p>{nameB.price}</p>
               <div className="abx">
