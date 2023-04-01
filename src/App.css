@@ -109,7 +109,7 @@
 }
 
 /* Main */
-.main, .contactus, .aboutUs, .login, .register, .productInfo{
+.main, .contactus, .aboutUs, .login, .register, .productInfo, .emptyStatus, .wishlist{
     margin-left: auto;
     margin-right: auto;
     max-width: 1200px;
@@ -139,6 +139,7 @@
 .card img{
     width: 160px;
     object-fit: contain;
+    margin-left: auto;
 }
 .card p{
     font-weight: 200;
@@ -254,6 +255,9 @@
 .checkout_left h1{
     font-weight: 200;
     width: 800px;
+}
+.checkout_left{
+    width: 80%;
 }
 
 /* Subtotal */
@@ -479,7 +483,7 @@ h5{
 }
 .productInfo_left img{
     display: block;
-    width:300px;
+    width:250px;
     padding: 20px;
     height: 180px;
     border: 1px solid #ddd;
@@ -504,6 +508,62 @@ h5{
     width: 80%;
 }
 .productInfo_right button{
+    width: 60%;
+    background-color: rgb(34,155,202);
+    color: white;
+    border: 1px solid rgb(34,155,202);
+    border-radius: 5px;
+    padding: 10px;
+    text-shadow: rgb(34,155,202);
+}
+
+
+/* cardCheckout */
+.cardCheckout, .cardWishList{
+    /* Flex will make in row */
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #b2b2b2;
+    padding: 15px;
+    margin: 5px;
+    /*  */
+    align-items: center;
+    /* justify-content: flex-end; */
+    width: 380px;
+    height: 140px;
+    margin-bottom: 0;
+    float: left;
+    margin-left: 40px;
+}
+/* width: 300px; */
+.cardCheckout img, .cardWishList img{
+    width: 80px;
+    object-fit: contain;
+    }
+.cardCheckout p, .cardWishList p{
+    font-weight:10;
+    margin: auto;
+}
+.cardCheckout button{
+    margin: 5px 0 5px auto;
+    background-color: #da4f49;
+    color: white;
+    border: 1px solid #da4f49;
+    border-radius: 5px;
+    padding: 10px;
+    text-shadow: #da4f49;
+}
+
+.removeWishList{
+    margin: 5px 0 5px auto;
+    background-color: #da4f49;
+    color: white;
+    border: 1px solid #da4f49;
+    border-radius: 5px;
+    padding: 10px;
+    text-shadow: #da4f49;
+}
+.addCartWish{
     width: 60%;
     background-color: rgb(34,155,202);
     color: white;

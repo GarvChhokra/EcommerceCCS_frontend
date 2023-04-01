@@ -23,11 +23,13 @@ export default function Header(props) {
                 </a>
               </li>
             </Link>
-            <li>
-              <a href="">
-                <i className="fa fa-heart"> WishList</i>
-              </a>
-            </li>
+            <Link to="/wishlist">
+              <li>
+                <a href="">
+                  <i className="fa fa-heart"> WishList</i>
+                </a>
+              </li>
+            </Link>
             <Link to="/checkout">
               <li>
                 <a href="">

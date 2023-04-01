@@ -14,11 +14,58 @@ import ContactUs from "./components/ContactUs";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import ProductInfo from "./components/ProductInfo";
-import { createContext } from "react";
+import Wishlist from "./components/Wishlist";
 
 function App() {
   // Cart functionality
   const [cart, setCart] = useState([]);
+  const handleButtonClick2 = (cartItem) => {
+    setCart((prevCart) => [...prevCart, cartItem]);
+    // setCart(cartItem);
+    console.log(cart);
+  };
+
+  const removeItem = (removeItem) => {
+    for (let i = 0; i < cart.length; i++) {
+      console.log(cart[i].name);
+      if (cart[i].name == removeItem) {
+        var index = cart[i].name.indexOf(removeItem);
+        console.log("Item:", removeItem);
+        console.log("Index", cart[i].name.indexOf(removeItem));
+        const newCart = [...cart]; // create new copy of cart
+        newCart.splice(index, 1); // modify the copy
+        setCart(newCart); // set the state to the new copy
+        console.log(newCart);
+      }
+    }
+  };
+
+  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+
+  useEffect(() => {
+    console.log("Updated cart:", cart);
+  }, [cart]);
+
+  // Wishlist functionality
+  const [wishList, setWishList] = useState([]);
+  const handleButtonClick3 = (wishListItem) => {
+    setWishList((prevWishList) => [...prevWishList, wishListItem]);
+    console.log(wishList);
+  };
+  useEffect(() => {
+    console.log("Updated wishlist:", wishList);
+  }, [wishList]);
+
+  const removeWishItems = (removeWItem) => {
+    for (let i = 0; i < wishList.length; i++) {
+      if (wishList[i].name == removeWItem) {
+        let idex = wishList[i].name.indexOf(removeWItem);
+        const newWishList = [...wishList];
+        newWishList.splice(idex, 1);
+        setWishList(newWishList);
+      }
+    }
+  };
 
   // individual page for product
   const [item, setItem] = useState([]);
@@ -65,7 +112,11 @@ function App() {
         <main>
           <Switch>
             <Route path="/checkout">
-              <Checkout />
+              <Checkout
+                cart={cart}
+                totalPrice={totalPrice}
+                removeCartBtn={removeItem}
+              />
             </Route>
             {/* {name.map((nameB) => (
               <Route key={nameB.name} path={`/${nameB.name}`}>
@@ -73,7 +124,14 @@ function App() {
               </Route>
             ))} */}
             <Route path={`/${item.name}`}>
-              <ProductInfo item={item} />
+              <ProductInfo item={item} onButtonClick1={handleButtonClick2} />
+            </Route>
+            <Route path="/wishlist">
+              <Wishlist
+                wishList={wishList}
+                onButtonClick1={handleButtonClick2}
+                removeWishItems={removeWishItems}
+              />
             </Route>
             <Route path="/about">
               <About_Us client={client} />
@@ -89,18 +147,39 @@ function App() {
             </Route>
             <Route path="/">
               {!activeButton && (
-                <Main name={name} onButtonClick={handleButtonClick1} />
+                <Main
+                  name={name}
+                  onButtonClick={handleButtonClick1}
+                  onButtonClick1={handleButtonClick2}
+                  onButtonClick2={handleButtonClick3}
+                  cart={cart}
+                />
               )}
               {activeButton === "laptop" && (
-                <Laptop name={name} onButtonClick={handleButtonClick1} />
+                <Laptop
+                  name={name}
+                  onButtonClick={handleButtonClick1}
+                  onButtonClick1={handleButtonClick2}
+                  onButtonClick2={handleButtonClick3}
+                  cart={cart}
+                />
               )}
               {activeButton === "accessories" && (
-                <Accessories name={name} onButtonClick={handleButtonClick1} />
+                <Accessories
+                  name={name}
+                  onButtonClick={handleButtonClick1}
+                  onButtonClick1={handleButtonClick2}
+                  onButtonClick2={handleButtonClick3}
+                  cart={cart}
+                />
               )}
               {activeButton === "cartridge" && (
                 <Printer_Cartridge
                   name={name}
                   onButtonClick={handleButtonClick1}
+                  onButtonClick1={handleButtonClick2}
+                  onButtonClick2={handleButtonClick3}
+                  cart={cart}
                 />
               )}
             </Route>

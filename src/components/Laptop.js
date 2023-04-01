@@ -44,10 +44,32 @@ export default function Laptop(props) {
                 <p>{nameB.description}</p>
                 <p>{nameB.price}</p>
                 <div className="abx">
-                  <button>
+                  <button
+                    onClick={() => {
+                      props.onButtonClick1({
+                        name: nameB.name,
+                        brand: nameB.brand,
+                        price: nameB.price,
+                        category: nameB.category,
+                        description: nameB.description,
+                        image: `${nameB.name}.jpg`,
+                      });
+                    }}
+                  >
                     <i className="fa fa-shopping-cart"> Add to cart</i>
                   </button>
-                  <button>
+                  <button
+                    onClick={() => {
+                      props.onButtonClick2({
+                        name: nameB.name,
+                        brand: nameB.brand,
+                        price: nameB.price,
+                        category: nameB.category,
+                        description: nameB.description,
+                        image: `${nameB.name}.jpg`,
+                      });
+                    }}
+                  >
                     <i className="fa fa-heart"></i>
                   </button>
                   <button>

@@ -23,7 +23,20 @@ export default function ProductInfo(props) {
             <br></br>
             <input type="text" defaultValue={1}></input>
           </p>
-          <button>Add to Cart</button>
+          <button
+            onClick={() => {
+              props.onButtonClick1({
+                name: props.item.name,
+                brand: props.item.brand,
+                price: props.item.price,
+                category: props.item.category,
+                description: props.item.description,
+                image: `${props.item.name}.jpg`,
+              });
+            }}
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </>
