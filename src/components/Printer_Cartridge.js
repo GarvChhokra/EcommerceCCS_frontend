@@ -16,6 +16,13 @@ export default function Printer_Cartridge(props) {
         <div className="card_jsn">
           {props.name
             .filter((item) => item.category === "Printer Cartridge")
+            .filter((search) => {
+              if (search.name.toLowerCase().match(props.searchItem)) {
+                return search;
+              } else if (props.searchItem == "") {
+                return search;
+              }
+            })
             .map((nameB) => (
               <div className="card">
                 <Link

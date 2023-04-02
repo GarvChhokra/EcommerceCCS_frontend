@@ -24,14 +24,14 @@ function App() {
     // setCart(cartItem);
     console.log(cart);
   };
+  const totalCartitems = cart.length;
+  console.log("Total Cart Items:", totalCartitems);
 
   const removeItem = (removeItem) => {
     for (let i = 0; i < cart.length; i++) {
-      console.log(cart[i].name);
       if (cart[i].name == removeItem) {
-        var index = cart[i].name.indexOf(removeItem);
+        var index = i;
         console.log("Item:", removeItem);
-        console.log("Index", cart[i].name.indexOf(removeItem));
         const newCart = [...cart]; // create new copy of cart
         newCart.splice(index, 1); // modify the copy
         setCart(newCart); // set the state to the new copy
@@ -39,7 +39,6 @@ function App() {
       }
     }
   };
-
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
   useEffect(() => {
@@ -59,7 +58,7 @@ function App() {
   const removeWishItems = (removeWItem) => {
     for (let i = 0; i < wishList.length; i++) {
       if (wishList[i].name == removeWItem) {
-        let idex = wishList[i].name.indexOf(removeWItem);
+        var idex = i;
         const newWishList = [...wishList];
         newWishList.splice(idex, 1);
         setWishList(newWishList);
@@ -72,6 +71,14 @@ function App() {
   const handleButtonClick1 = (productName) => {
     console.log(productName);
     setItem(productName);
+  };
+
+  // Search
+  const [searchItem, setSearchItem] = useState([]);
+
+  const searchItemFilter = (sItem) => {
+    setSearchItem(sItem.toLowerCase());
+    console.log(sItem.toLowerCase());
   };
 
   const client = [
@@ -108,7 +115,11 @@ function App() {
   return (
     <>
       <Router>
-        <Header onButtonClick={handleButtonClick} />
+        <Header
+          onButtonClick={handleButtonClick}
+          cart={cart}
+          searchItemFilter={searchItemFilter}
+        />
         <main>
           <Switch>
             <Route path="/checkout">
@@ -155,12 +166,23 @@ function App() {
                   cart={cart}
                 />
               )}
+              {activeButton === "main" && (
+                <Main
+                  name={name}
+                  onButtonClick={handleButtonClick1}
+                  onButtonClick1={handleButtonClick2}
+                  onButtonClick2={handleButtonClick3}
+                  searchItem={searchItem}
+                  cart={cart}
+                />
+              )}
               {activeButton === "laptop" && (
                 <Laptop
                   name={name}
                   onButtonClick={handleButtonClick1}
                   onButtonClick1={handleButtonClick2}
                   onButtonClick2={handleButtonClick3}
+                  searchItem={searchItem}
                   cart={cart}
                 />
               )}
@@ -170,6 +192,7 @@ function App() {
                   onButtonClick={handleButtonClick1}
                   onButtonClick1={handleButtonClick2}
                   onButtonClick2={handleButtonClick3}
+                  searchItem={searchItem}
                   cart={cart}
                 />
               )}
@@ -180,6 +203,7 @@ function App() {
                   onButtonClick1={handleButtonClick2}
                   onButtonClick2={handleButtonClick3}
                   cart={cart}
+                  searchItem={searchItem}
                 />
               )}
             </Route>

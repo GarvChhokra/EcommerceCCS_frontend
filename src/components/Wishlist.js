@@ -4,7 +4,10 @@ export default function Wishlist(props) {
   return (
     <div className="wishlist">
       <p>
-        <i>Total: {props.wishList.length}</i>
+        <i>
+          Total: {props.wishList.length}
+          <br></br>Please add something
+        </i>
       </p>
       {props.wishList.map((wishItm) => {
         return (

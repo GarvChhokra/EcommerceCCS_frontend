@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Laptop from "./Laptop";
 import { Link } from "react-router-dom";
 
 export default function Header(props) {
+  const [searchQuery, setSearchQuery] = useState("");
+  const total = props.cart.length;
+  let totalPrice = 0;
+  for (let i = 0; i < total; i++) {
+    let price = parseFloat(
+      props.cart[i].price.replace("$", "").replace(",", "")
+    );
+    totalPrice += price;
+  }
   return (
     <>
       <div className="header_component">
         <div className="navBar_top">
-          <button>
-            <b>Rs.</b> Currency<i className="fa fa-caret-down"></i>
-          </button>
+          <select defaultValue="$">
+            <option value="Rs.">Rs. Currency</option>
+            <option value="$" selected>
+              $ Currency
+            </option>
+          </select>
           <ul className="navbar_top_options">
             <li>
               <a href="tel:9412052744">
@@ -46,20 +58,40 @@ export default function Header(props) {
         </div>
         <div className="header">
           <div className="navBar">
-            <h1>
-              <a href="/" className="company_name">
-                Creative Computer Services
-              </a>
-            </h1>
+            <Link to="/">
+              <h1 onClick={() => props.onButtonClick("main")}>
+                <a href="" className="company_name">
+                  Creative Computer Services
+                </a>
+              </h1>
+            </Link>
             <div className="search_nav">
-              <input type="search" placeholder="Search"></input>
-              <button type="submit">
+              <input
+                type="search"
+                placeholder="Search"
+                onChange={(event) => {
+                  setSearchQuery(event.target.value);
+                }}
+              ></input>
+              <button
+                type="submit"
+                onClick={() => {
+                  {
+                    props.searchItemFilter(searchQuery);
+                  }
+                }}
+              >
                 <i className="fa fa-search"></i>
               </button>
             </div>
-            <button className="cart_btn">
-              Cart<i className="fa fa-shopping-cart"></i>
-            </button>
+            <Link to="/checkout">
+              <button className="cart_btn">
+                Cart
+                <i className="fa fa-shopping-cart"></i> {total} item(s) &nbsp; $
+                {totalPrice}
+                {props.totalPrice}
+              </button>
+            </Link>
           </div>
           <div className="options_sticky">
             <ul className="navbar_options">

@@ -21,6 +21,13 @@ export default function Laptop(props) {
         <div className="card_jsn">
           {props.name
             .filter((item) => item.category === "Laptop")
+            .filter((search) => {
+              if (search.name.toLowerCase().match(props.searchItem)) {
+                return search;
+              } else if (props.searchItem == "") {
+                return search;
+              }
+            })
             .map((nameB) => (
               <div className="card">
                 <Link

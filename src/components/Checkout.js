@@ -25,7 +25,7 @@ export default function Checkout(props) {
         <div className="checkout_left">
           <h1>Shopping Cart</h1>
           {props.cart.map((itm) => {
-            console.log(props.cart.length);
+            console.log("Checkout length:", props.cart.length);
             return (
               <>
                 <div key={itm.id} className="cardCheckout">
@@ -35,7 +35,7 @@ export default function Checkout(props) {
                   <button
                     onClick={() => {
                       props.removeCartBtn(itm.name);
-                      console.log(itm.name);
+                      console.log("Checkout item that clicked:", itm.name);
                     }}
                   >
                     Remove
