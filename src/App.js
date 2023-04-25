@@ -33,7 +33,10 @@ function App() {
       email: emailCookie,
     };
     axios
-      .post("http://localhost:3200/fetchorderData", emailDataOrder)
+      .post(
+        "https://ccs-server.azurewebsites.net/fetchorderData",
+        emailDataOrder
+      )
       .then((response) => {
         if (response) {
           console.log(response.data);
@@ -62,7 +65,7 @@ function App() {
         emailData: emailCookie,
       };
       axios
-        .post("http://localhost:3200/shoppingcartItems", reqData)
+        .post("https://ccs-server.azurewebsites.net/shoppingcartItems", reqData)
         .then((response) => setCart(response.data))
         .catch((error) => {
           console.log(error);
@@ -98,7 +101,10 @@ function App() {
         productId: cartItem.id,
       };
       axios
-        .post("http://localhost:3200/shoppingcartItemsId", reqData)
+        .post(
+          "https://ccs-server.azurewebsites.net/shoppingcartItemsId",
+          reqData
+        )
         .then((response) => {
           console.log("fetchiihkj.kjl", response.data);
           const searchId = response.data.find(
@@ -108,7 +114,10 @@ function App() {
             increaseQty(cartItem.id);
           } else {
             axios
-              .post("http://localhost:3200/addProductsCart", requestData)
+              .post(
+                "https://ccs-server.azurewebsites.net/addProductsCart",
+                requestData
+              )
               .then((response) => {
                 if (response.data == "Product data entered on the cart") {
                   // setCart(response.data);
@@ -116,7 +125,10 @@ function App() {
                     emailData: emailCookie,
                   };
                   axios
-                    .post("http://localhost:3200/shoppingcartItems", reqData)
+                    .post(
+                      "https://ccs-server.azurewebsites.net/shoppingcartItems",
+                      reqData
+                    )
                     .then((response) => setCart(response.data))
                     .catch((error) => {
                       console.log(error);
@@ -174,7 +186,10 @@ function App() {
         product_id: dec_QtyId,
       };
       axios
-        .post("http://localhost:3200/fetchProductShoppingCart", data)
+        .post(
+          "https://ccs-server.azurewebsites.net/fetchProductShoppingCart",
+          data
+        )
         .then((response) => {
           console.log(response.data[0].quantity);
           if (response.data[0].quantity > 1) {
@@ -196,7 +211,7 @@ function App() {
             };
             axios
               .post(
-                "http://localhost:3200/updateProductShoppingCart",
+                "https://ccs-server.azurewebsites.net/updateProductShoppingCart",
                 updatedData
               )
               .then((response) => {
@@ -206,7 +221,10 @@ function App() {
                     emailData: emailCookie,
                   };
                   axios
-                    .post("http://localhost:3200/shoppingcartItems", reqData)
+                    .post(
+                      "https://ccs-server.azurewebsites.net/shoppingcartItems",
+                      reqData
+                    )
                     .then((response) => setCart(response.data))
                     .catch((error) => {
                       console.log(error);
@@ -239,7 +257,10 @@ function App() {
         product_id: incr_QtyId,
       };
       axios
-        .post("http://localhost:3200/fetchProductShoppingCart", data)
+        .post(
+          "https://ccs-server.azurewebsites.net/fetchProductShoppingCart",
+          data
+        )
         .then((response) => {
           console.log(response.data[0].quantity);
           if (response.data[0].quantity < 10) {
@@ -262,7 +283,7 @@ function App() {
 
             axios
               .post(
-                "http://localhost:3200/updateProductShoppingCart",
+                "https://ccs-server.azurewebsites.net/updateProductShoppingCart",
                 updatedData
               )
               .then((response) => {
@@ -273,7 +294,10 @@ function App() {
                     emailData: emailCookie,
                   };
                   axios
-                    .post("http://localhost:3200/shoppingcartItems", reqData)
+                    .post(
+                      "https://ccs-server.azurewebsites.net/shoppingcartItems",
+                      reqData
+                    )
                     .then((response) => setCart(response.data))
                     .catch((error) => {
                       console.log(error);
@@ -308,14 +332,20 @@ function App() {
         id: removeItemId,
       };
       axios
-        .post("http://localhost:3200/removeItems_cart", requestData)
+        .post(
+          "https://ccs-server.azurewebsites.net/removeItems_cart",
+          requestData
+        )
         .then((response) => {
           if (response.data == "Product removed from the cart") {
             const reqData = {
               emailData: emailCookie,
             };
             axios
-              .post("http://localhost:3200/shoppingcartItems", reqData)
+              .post(
+                "https://ccs-server.azurewebsites.net/shoppingcartItems",
+                reqData
+              )
               .then((response) => setCart(response.data))
               .catch((error) => {
                 console.log(error);
@@ -415,7 +445,7 @@ function App() {
   console.log(name);
   useEffect(() => {
     axios
-      .post("http://localhost:3200/fetchProducts")
+      .post("https://ccs-server.azurewebsites.net/fetchProducts")
       // .get("https://ccsdata.onrender.com/ccsData")
       .then((response) => setName(response.data))
       .catch((error) => console.log(error));
@@ -427,7 +457,7 @@ function App() {
       emailData: emailCookie,
     };
     axios
-      .post("http://localhost:3200/shoppingcartItems", reqData)
+      .post("https://ccs-server.azurewebsites.net/shoppingcartItems", reqData)
       .then((response) => {
         setCart(response.data);
       })

@@ -41,7 +41,7 @@ export default function Register() {
       postalcode,
     };
     axios
-      .post("http://localhost:3200/userRegistration", userData)
+      .post("https://ccs-server.azurewebsites.net/userRegistration", userData)
       .then((response) => {
         if (response.data == "Data inserted successfully") {
           console.log(response.data);
@@ -57,7 +57,10 @@ export default function Register() {
             console.log(item.id);
             console.log(email);
             axios
-              .post("http://localhost:3200/addProductsCart", reqData)
+              .post(
+                "https://ccs-server.azurewebsites.net/addProductsCart",
+                reqData
+              )
               .then((response) => {
                 if (response.data == "Product data entered on the cart") {
                   console.log("Product added to cart:", item.name);
@@ -74,7 +77,10 @@ export default function Register() {
         const code = nanoid();
         console.log("couponCode");
         console.log(code);
-        if (window.location.href != "http://localhost:3200/checkoutPayment") {
+        if (
+          window.location.href !=
+          "https://ccs-server.azurewebsites.net/checkoutPayment"
+        ) {
           history.push({
             pathname: "/",
             state: { email: email },
@@ -86,7 +92,7 @@ export default function Register() {
             isExpired: 0,
           };
           axios
-            .post("http://localhost:3200/addcoupons", couponData)
+            .post("https://ccs-server.azurewebsites.net/addcoupons", couponData)
             .then((response) => {
               if (response.data === "Coupon Data Inserted Successfully") {
                 console.log("Data entered");
@@ -101,7 +107,7 @@ export default function Register() {
         alert("Error registering user");
       });
     // try {
-    //   const response = axios.post("http://localhost:3200/userRegistration", {
+    //   const response = axios.post("https://ccs-server.azurewebsites.net/userRegistration", {
     //     name,
     //     email,
     //     password: hashedPassword,
@@ -141,7 +147,7 @@ export default function Register() {
     //       console.log(item.id);
     //       console.log(email);
     //       axios
-    //         .post("http://localhost:3200/addProductsCart", reqData)
+    //         .post("https://ccs-server.azurewebsites.net/addProductsCart", reqData)
     //         .then((response) => {
     //           if (response.data == "Product data entered on the cart") {
     //             console.log("Product added to cart:", item.name);

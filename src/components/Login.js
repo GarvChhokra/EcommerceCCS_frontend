@@ -41,7 +41,7 @@ export default function Login(props) {
         password: hashedPassword,
       };
       axios
-        .post("http://localhost:3200/userLogin", user)
+        .post("https://ccs-server.azurewebsites.net/userLogin", user)
         .then((response) => {
           if (
             response.status === 200 &&
@@ -55,7 +55,8 @@ export default function Login(props) {
             Cookies.set("sessionId", sessionId, { expires: 1 });
             console.log("Login Cookies", Cookies.get("sessionId"));
             if (
-              window.location.href != "http://localhost:3200/checkoutPayment"
+              window.location.href !=
+              "https://ccs-server.azurewebsites.net/checkoutPayment"
             ) {
               history.push({
                 pathname: "/",
@@ -76,7 +77,10 @@ export default function Login(props) {
               console.log(item.id);
               console.log(email);
               axios
-                .post("http://localhost:3200/addProductsCart", reqData)
+                .post(
+                  "https://ccs-server.azurewebsites.net/addProductsCart",
+                  reqData
+                )
                 .then((response) => {
                   if (response.data == "Product data entered on the cart") {
                     console.log("Product added to cart:", item.name);

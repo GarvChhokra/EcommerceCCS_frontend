@@ -21,12 +21,12 @@ export default function TotalPayment(props) {
     email: emailPay,
   };
   axios
-    .post("http://localhost:3200/fetchCouponCode", emailData)
+    .post("https://ccs-server.azurewebsites.net/fetchCouponCode", emailData)
     .then((response) => {
       console.log(response.data[0].couponDiscount);
       if (response.data[0].isExpired == 0 && totalPrice > 60) {
         setDiscount(10);
-        // axios.get("http://localhost:3200/updateCouponCode", emailData);
+        // axios.get("https://ccs-server.azurewebsites.net/updateCouponCode", emailData);
       } else {
         setDiscount(0);
       }
@@ -48,7 +48,7 @@ export default function TotalPayment(props) {
 
   const orderProducts = () => {
     axios
-      .post("http://localhost:3200/orderDataInsert", emailData)
+      .post("https://ccs-server.azurewebsites.net/orderDataInsert", emailData)
       .then((response) => {
         if (response.data === "Data enetered successfully in the order table") {
           console.log("Data entered into the order table");
@@ -56,7 +56,10 @@ export default function TotalPayment(props) {
       })
       .catch((error) => console.log(error));
     axios
-      .post("http://localhost:3200/deleteShoppingCart", emailData)
+      .post(
+        "https://ccs-server.azurewebsites.net/deleteShoppingCart",
+        emailData
+      )
       .then((response) => {
         if (response.data == "Shopping Cart Empty") {
           console.log(response);
@@ -64,7 +67,7 @@ export default function TotalPayment(props) {
       })
       .catch((error) => console.log(error));
     axios
-      .post("http://localhost:3200/updateCouponCode", emailData)
+      .post("https://ccs-server.azurewebsites.net/updateCouponCode", emailData)
       .then((response) => {
         if (response.data == "Updated Coupon Status") {
           console.log(response);

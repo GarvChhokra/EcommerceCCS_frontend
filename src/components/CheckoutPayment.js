@@ -59,7 +59,7 @@ export default function CheckoutPayment() {
         // // Cookies.set("sessionId", email);
         // const pas = nanoid(10);
         // axios
-        //   .post("http://localhost:3200/userRegistration", {
+        //   .post("https://ccs-server.azurewebsites.net/userRegistration", {
         //     email: email,
         //     password: pas,
         //   })
@@ -79,7 +79,7 @@ export default function CheckoutPayment() {
       };
       console.log("EMail of the address page", email);
       axios
-        .post("http://localhost:3200/addressData", addData)
+        .post("https://ccs-server.azurewebsites.net/addressData", addData)
         .then((response) => {
           if ((response.data = "Address Data entered Successfully")) {
             console.log("address data send successfully");
