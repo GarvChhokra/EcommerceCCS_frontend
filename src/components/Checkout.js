@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Subtotal from "./Subtotal";
+import Cookies from "js-cookie";
+import axios from "axios";
 // import CurrencyFormat from "react-currency-format";
 
 export default function Checkout(props) {
+  console.log("Shopping Cart Cart Item", props.cart);
   const total = props.cart.length;
   let totalPrice = 0;
   for (let i = 0; i < total; i++) {
     let price = parseFloat(
-      props.cart[i].price.replace("$", "").replace(",", "")
+      props.cart[i].quantity *
+        props.cart[i].price.replace("$", "").replace(",", "")
     );
     totalPrice += price;
   }
@@ -29,13 +33,38 @@ export default function Checkout(props) {
             return (
               <>
                 <div key={itm.id} className="cardCheckout">
-                  <img src={itm.image}></img>
+                  <img src={`${itm.name}.jpg`}></img>
                   <p>{itm.name}</p>
-                  <p>{itm.price}</p>
+                  <p>
+                    {Cookies.get("currency") === "$"
+                      ? "$" + itm.price
+                      : "Rs." + (itm.price * 60).toFixed(2)}
+                  </p>
+                  <button
+                    className="addMin"
+                    style={{ backgroundColor: "lightblue" }}
+                    onClick={() => {
+                      props.decreaseQty(itm.id);
+                    }}
+                  >
+                    -
+                  </button>
+                  <p>Qty: {itm.quantity}</p>
+                  <button
+                    className="addMin"
+                    style={{ backgroundColor: "lightblue", marginRight: "5px" }}
+                    onClick={() => {
+                      props.increaseQty(itm.id);
+                    }}
+                  >
+                    +
+                  </button>
                   <button
                     onClick={() => {
-                      props.removeCartBtn(itm.name);
+                      // props.removeCartBtn(itm.name);
+                      props.removeCartBtn(itm.id);
                       console.log("Checkout item that clicked:", itm.name);
+                      console.log("Checkout item ID that clicked:", itm.id);
                     }}
                   >
                     Remove

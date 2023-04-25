@@ -31,8 +31,6 @@ def checking_links_accessible():
         driver.back()
         print("home")
         print("going to next")
-        # else:
-        #     print(href, "False")
 
 
 checking_links_accessible()

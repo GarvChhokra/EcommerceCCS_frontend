@@ -108,9 +108,76 @@
     border: none;
     float: left;
 }
+@media (max-width: 1100px) {
+    .search_nav input{
+      width: 250px;
+    }
+    .search_nav button{
+      width: 40px;
+    }
+    .cart_btn{
+        width: 150px;
+    }
+    .company_name{
+        font-size: 25px;
+        max-width: 280px;
+        font-weight: 150;
+    }
+    .cart_btn span{
+        display: none;
+    }
+  }
+  @media (max-width: 750px) {
+    .cart_btn{
+        display: none;
+    }
+    .search_nav{
+        float: right;
+    }
+    .search_nav input{
+        width: 200px;
+      }
+    .description{
+        display: none;
+    }
+
+  }
+  @media (max-width: 600px) {
+    .company_name{
+        font-size: 20px;
+        max-width: 250px;
+        font-weight: 120;
+    }
+    .navbar_top_options span{
+        display: none;
+    }
+    .search_nav{
+        /* display: both; */
+        float: right;
+        margin-top: -10px;
+    }
+    .search_nav input{
+        width: 100px;
+      }
+      .search_nav button{
+        width: 30px;
+      }
+    .navbar_options{
+        margin-top: 5px;
+        padding: 8px;
+        background-color: rgb(34,155,202);
+        border-radius: 10px;
+    }
+    .navbar_options li{
+        display: block;
+        padding: 4px;
+        color: white;
+        text-align: center;
+    }
+  }
 
 /* Main */
-.main, .contactus, .aboutUs, .login, .register, .productInfo, .emptyStatus, .wishlist, .compare{
+.main, .contactus, .aboutUs, .login, .register, .productInfo, .emptyStatus, .wishlist, .compare, .paymentPage, .totalPrice, .termsCondition, .privacyPolicy,.orderHistory{
     margin-left: auto;
     margin-right: auto;
     max-width: 1200px;
@@ -193,6 +260,7 @@
     color: white;   
 }
 
+
 .partition{
     border-top: 0.2px dotted white;
     margin: 10px;
@@ -216,6 +284,46 @@
     padding: 25px;
     /* height: 200px; */
   }
+
+@media (max-width: 1100px) {
+    .footer_columns {
+        width: 780px;
+      }
+    .column{
+        width: 15%;
+        padding: 30px;
+    }
+}
+@media (max-width: 750px) {
+    .footer_columns {
+        width: 580px;
+      }
+    .column {
+        width: 20%;
+        padding: 5px;
+        /* height: 200px; */
+      }
+}
+@media (max-width: 500px) {
+    .footer{
+        padding: 4px;
+    }
+    .footer_columns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+      }
+    .column {
+        width: 45%;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+      .column:nth-child(2n+1) {
+        margin-right: 10px;
+      }
+    
+}
 .row:after {
     content: "";
     display: table;
@@ -267,6 +375,9 @@
 .checkout_left h1{
     font-weight: 200;
     width: 800px;
+}
+.checkout_left p{
+    padding: 8px;
 }
 .checkout_left{
     width: 80%;
@@ -444,8 +555,9 @@
     padding: 10px;
     border-radius: 5px;
     max-width: 400px;
-    max-height: 240px;
+    max-height: 800px;
     margin-bottom: 5px;
+    
 }
 .register p{
     margin: 0;
@@ -541,31 +653,35 @@ h5{
     /*  */
     align-items: center;
     /* justify-content: flex-end; */
-    width: 380px;
-    height: 140px;
+    width: 400px;
+    height: 150px;
     margin-bottom: 0;
     float: left;
     margin-left: 40px;
 }
+
 /* width: 300px; */
 .cardCheckout img, .cardWishList img{
-    width: 80px;
+    width: 70px;
     object-fit: contain;
     }
 .cardCheckout p, .cardWishList p{
-    font-weight:10;
-    margin: auto;
+    font-weight:7;
 }
 .cardCheckout button{
-    margin: 5px 0 5px auto;
+    margin: 6px 0 5px auto;
     background-color: #da4f49;
     color: white;
     border: 1px solid #da4f49;
     border-radius: 5px;
-    padding: 10px;
+    padding: 7px;
     text-shadow: #da4f49;
 }
-
+@media (max-width: 600px) {
+    .cardCheckout img, .cardWishList img{
+        width: 50px;
+        }
+}
 .removeWishList{
     margin: 5px 0 5px auto;
     background-color: #da4f49;
@@ -583,4 +699,35 @@ h5{
     border-radius: 5px;
     padding: 10px;
     text-shadow: rgb(34,155,202);
+}
+.guestCheckout{
+    margin-left: 6%;
+    margin-top: -140px;
+    margin-bottom: 50px;
+}
+.totalPrice{
+    width: 200px;
+    text-align: center;
+    border: 1px solid #b2b2b2;
+    background-color: rgb(238,238,238);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.totalPrice button{
+    width: 50%;
+    background-color: rgb(34,155,202);
+    color: white;
+    border: 1px solid rgb(34,155,202);
+    border-radius: 5px;
+    padding: 10px;
+    text-shadow: rgb(34,155,202);
+}
+.orderHistory{
+    display: flex; 
+    flex-direction: column;
+}
+.orderHistoryProducts img{
+    float: left;
+    width: 100px;
 }

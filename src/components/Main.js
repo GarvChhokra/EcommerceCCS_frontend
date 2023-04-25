@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function Main(props) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,6 +35,7 @@ export default function Main(props) {
             <li key={nameB.price}>{nameB.price}</li>
           ))}
         </ul> */}
+
         <div className="card_jsn">
           {itemsToShow
             .filter((search) => {
@@ -48,6 +50,7 @@ export default function Main(props) {
                 <Link
                   onClick={() => {
                     props.onButtonClick({
+                      id: nameB.id,
                       name: nameB.name,
                       brand: nameB.brand,
                       price: nameB.price,
@@ -56,19 +59,29 @@ export default function Main(props) {
                       image: `${nameB.name}.jpg`,
                     });
                     console.log(nameB.name);
+                    console.error("ID OF NAMB IN MAIN COMPONENT", nameB.id);
                   }}
                   className="my-Link"
                   to={`/${nameB.name}`}
                 >
-                  <img src={`${nameB.name}.jpg`} alt={nameB.category}></img>
+                  <img
+                    className="imageProduct"
+                    src={`${nameB.name}.jpg`}
+                    alt={nameB.category}
+                  ></img>
                   <h4>{nameB.name}</h4>
                 </Link>
-                <p>{nameB.description}</p>
-                <p>{nameB.price}</p>
+                <p className="description">{nameB.description}</p>
+                <p>
+                  {Cookies.get("currency") === "$"
+                    ? "$" + nameB.price
+                    : "Rs." + (nameB.price * 60).toFixed(2)}
+                </p>
                 <div className="abx">
                   <button
                     onClick={() => {
                       props.onButtonClick1({
+                        id: nameB.id,
                         name: nameB.name,
                         brand: nameB.brand,
                         price: nameB.price,

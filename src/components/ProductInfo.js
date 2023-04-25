@@ -18,14 +18,15 @@ export default function ProductInfo(props) {
           <p>
             <strong>Price:</strong> {props.item.price}
           </p>
-          <p>
+          {/* <p>
             <label>Qty:</label>
             <br></br>
             <input type="text" defaultValue={1}></input>
-          </p>
+          </p> */}
           <button
             onClick={() => {
               props.onButtonClick1({
+                id: props.item.id,
                 name: props.item.name,
                 brand: props.item.brand,
                 price: props.item.price,

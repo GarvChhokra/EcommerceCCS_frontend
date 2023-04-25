@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Footer() {
+export default function Footer(props) {
   return (
     <>
       <div className="footer">
@@ -12,8 +12,12 @@ export default function Footer() {
               <li>About us</li>
             </Link>
             <li>Delivery Information</li>
-            <li>Privacy Policy</li>
-            <li>Terms & Condition</li>
+            <Link to="/privacypolicy">
+              <li>Privacy Policy</li>
+            </Link>
+            <Link to="/termsCondition">
+              <li>Terms & Condition</li>
+            </Link>
           </div>
           <div className="column">
             <ul>Customer Service</ul>
@@ -35,8 +39,18 @@ export default function Footer() {
             <Link to="/login">
               <li>My Account</li>
             </Link>
-            <li>Order History</li>
-            <li>Wish List</li>
+            <Link to="/orderhistory">
+              <li
+                onClick={() => {
+                  props.data_OrderHistory();
+                }}
+              >
+                Order History
+              </li>
+            </Link>
+            <Link to="/wishlist">
+              <li>Wish List</li>
+            </Link>
             <li>Newsletter</li>
           </div>
         </div>

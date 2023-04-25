@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -47,8 +48,12 @@ export default function Accessories(props) {
                   <img src={`${nameB.name}.jpg`} alt={nameB.category}></img>
                   <h4>{nameB.name}</h4>
                 </Link>
-                <p>{nameB.description}</p>
-                <p>{nameB.price}</p>
+                <p className="description">{nameB.description}</p>
+                <p>
+                  {Cookies.get("currency") === "$"
+                    ? "$" + nameB.price
+                    : "Rs." + (nameB.price * 60).toFixed(2)}
+                </p>
                 <div className="abx">
                   <button
                     onClick={() => {
